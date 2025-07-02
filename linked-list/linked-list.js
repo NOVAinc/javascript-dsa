@@ -139,6 +139,30 @@ export default class LinkedList {
     currentNode.data = value;
   }
 
+  removeAt(index) {
+    let eliminatedNode;
+
+    if (index + 1 > this.size()) {
+      throw new Error("Trying to eliminate element beyond the list bounds");
+    }
+
+    if (index === 0 && this.size() === 1) {
+      eliminatedNode = this.headNode;
+      this.headNode = undefined;
+      this.tailNode = undefined;
+      return eliminatedNode;
+    } else if (index === 0) {
+      eliminatedNode = this.headNode;
+      this.headNode = this.headNode.nextNode;
+      return eliminatedNode;
+    } else {
+      eliminatedNode = this.at(index);
+      let previousNode = this.at(index - 1);
+      previousNode.nextNode = eliminatedNode.nextNode;
+      return eliminatedNode;
+    }
+  }
+
   toString() {
     let str = "";
     let currentNode = this.headNode;

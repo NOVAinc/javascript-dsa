@@ -55,4 +55,18 @@ export default class HashMap {
     }
     return bucket.findKey(key) === false ? false : true;
   }
+
+  remove(key) {
+    let index = this.hash(key);
+    let bucket = this.buckets[index];
+
+    if (bucket === null) {
+      return false;
+    } else if (this.has(key)) {
+      let keyIndex = bucket.findKey(key);
+      bucket.removeAt(keyIndex);
+      return true;
+    }
+    return false;
+  }
 }

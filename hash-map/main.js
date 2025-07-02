@@ -30,3 +30,6 @@ console.log(newHash.has("Nom"));
 console.log(newHash.has("Name"));
 console.log(newHash.has("Patrick"));
 console.log(newHash.has("Nome"));
+
+newHash.remove("Nom");
+newHash.remove("Soren");
