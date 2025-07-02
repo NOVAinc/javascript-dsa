@@ -44,6 +44,9 @@ export default class LinkedList {
   }
 
   at(index) {
+    if (index + 1 > this.size()) {
+      throw new Error("Attempting to modify item beyond list bounds");
+    }
     let count = 0;
     let currentNode = this.headNode;
 
@@ -97,6 +100,43 @@ export default class LinkedList {
     }
 
     return null;
+  }
+
+  /**
+   * Find the index of the first node containing the given key.
+   *
+   * @param {String} key - The key to search for.
+   * @return {Number} The index of the first node with the given key, or false if not found.
+   */
+  findKey(key) {
+    let count = 0;
+    let currentNode = this.headNode;
+
+    while (currentNode !== null) {
+      if (currentNode.data[0] == key) {
+        return count;
+      }
+      count++;
+      currentNode = currentNode.nextNode;
+    }
+
+    return false;
+  }
+
+  updateAt(index, value) {
+    if (index + 1 > this.size()) {
+      throw new Error("Attempted to update out of list range");
+    }
+
+    let i = 0;
+    let currentNode = this.headNode;
+
+    while (i < index) {
+      currentNode = currentNode.nextNode;
+      i++;
+    }
+
+    currentNode.data = value;
   }
 
   toString() {
