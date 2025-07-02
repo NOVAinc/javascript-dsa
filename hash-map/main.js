@@ -25,3 +25,8 @@ newHash.set("Nome", "Cognome");
 newHash.set("Name", "Surname");
 
 newHash.get("Soren");
+
+console.log(newHash.has("Nom"));
+console.log(newHash.has("Name"));
+console.log(newHash.has("Patrick"));
+console.log(newHash.has("Nome"));

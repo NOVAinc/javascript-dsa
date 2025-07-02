@@ -45,4 +45,14 @@ export default class HashMap {
       return data[1];
     }
   }
+
+  has(key) {
+    let index = this.hash(key);
+    let bucket = this.buckets[index];
+
+    if (bucket === null) {
+      return false;
+    }
+    return bucket.findKey(key) === false ? false : true;
+  }
 }
