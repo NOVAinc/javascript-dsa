@@ -31,5 +31,9 @@ console.log(newHash.has("Name"));
 console.log(newHash.has("Patrick"));
 console.log(newHash.has("Nome"));
 
+console.log(newHash.length());
+
 newHash.remove("Nom");
 newHash.remove("Soren");
+
+console.log(newHash.length());

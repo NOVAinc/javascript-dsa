@@ -69,4 +69,14 @@ export default class HashMap {
     }
     return false;
   }
+
+  length() {
+    let length = 0;
+    for (let bucket of this.buckets) {
+      if (bucket instanceof LinkedList) {
+        length += bucket.size();
+      }
+    }
+    return length;
+  }
 }
