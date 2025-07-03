@@ -37,3 +37,7 @@ newHash.remove("Nom");
 newHash.remove("Soren");
 
 console.log(newHash.length());
+
+newHash.clear();
+
+console.log(newHash.length());

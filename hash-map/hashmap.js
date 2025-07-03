@@ -79,4 +79,10 @@ export default class HashMap {
     }
     return length;
   }
+
+  clear() {
+    for (let index in this.buckets) {
+      this.buckets[index] = null;
+    }
+  }
 }
