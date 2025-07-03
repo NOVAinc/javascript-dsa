@@ -10,7 +10,6 @@ newHash.set("Jorge", "Medina");
 
 newHash.set("Marce", "Medina");
 
-newHash.set("Lucas", "Medina");
 newHash.set("Fabio", "Medina");
 newHash.set("Lucho", "Medina");
 newHash.set("Soren", "Medina");
@@ -38,6 +37,28 @@ newHash.remove("Soren");
 
 console.log(newHash.length());
 
-newHash.clear();
+console.log(newHash.keys());
+console.log(newHash.values());
+console.log(newHash.entries());
 
-console.log(newHash.length());
+newHash.set("Apple", "Red");
+newHash.set("Lemon", "Yellow");
+newHash.set("Watermelon", "Green");
+newHash.set("Eggplant", "Purple");
+newHash.set("Turnip", "White");
+newHash.set("Turnip", "Blue");
+
+let test = new HashMap();
+
+test.set("apple", "red");
+test.set("banana", "yellow");
+test.set("carrot", "orange");
+test.set("dog", "brown");
+test.set("elephant", "gray");
+test.set("frog", "green");
+test.set("grape", "purple");
+test.set("hat", "black");
+test.set("ice cream", "white");
+test.set("jacket", "blue");
+test.set("kite", "pink");
+test.set("lion", "golden");

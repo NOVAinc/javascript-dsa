@@ -16,6 +16,10 @@ export default class HashMap {
   }
 
   set(key, value) {
+    if (this.length() >= this.capacity * this.loadFactor) {
+      this.expand();
+    }
+
     let index = this.hash(key);
 
     if (this.buckets[index] === null) {
@@ -84,5 +88,50 @@ export default class HashMap {
     for (let index in this.buckets) {
       this.buckets[index] = null;
     }
+  }
+
+  keys() {
+    let keys = [];
+    for (let bucket of this.buckets) {
+      if (bucket instanceof LinkedList) {
+        let nodeKeys = bucket.toArray().map((data) => data[0]);
+        keys = [...keys, ...nodeKeys];
+      }
+    }
+
+    return keys;
+  }
+
+  values() {
+    let values = [];
+    for (let bucket of this.buckets) {
+      if (bucket instanceof LinkedList) {
+        let nodeValues = bucket.toArray().map((data) => data[1]);
+        values = [...values, ...nodeValues];
+      }
+    }
+
+    return values;
+  }
+
+  entries() {
+    let entries = [];
+    for (let bucket of this.buckets) {
+      if (bucket instanceof LinkedList) {
+        let nodeEntries = bucket.toArray();
+        entries = [...entries, ...nodeEntries];
+      }
+    }
+
+    return entries;
+  }
+
+  expand() {
+    let entries = this.entries();
+    this.capacity *= 2;
+
+    this.buckets = new Array(this.capacity).fill(null);
+
+    entries.map((entry) => this.set(entry[0], entry[1]));
   }
 }

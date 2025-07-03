@@ -112,7 +112,7 @@ export default class LinkedList {
     let count = 0;
     let currentNode = this.headNode;
 
-    while (currentNode !== null) {
+    while (currentNode !== null && currentNode !== undefined) {
       if (currentNode.data[0] == key) {
         return count;
       }
@@ -174,5 +174,22 @@ export default class LinkedList {
 
     str += "null";
     return str;
+  }
+
+  toArray() {
+    let arr = [];
+
+    if (this.headNode === null || this.headNode === undefined) {
+      return arr;
+    } else {
+      let size = this.size();
+      let currentNode = this.headNode;
+
+      for (let i = 0; i < size; i++) {
+        arr.push(currentNode.data);
+        currentNode = currentNode.nextNode;
+      }
+    }
+    return arr;
   }
 }
