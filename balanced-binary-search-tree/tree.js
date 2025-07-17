@@ -166,7 +166,22 @@ export default class Tree {
     return calculateHeight(node);
   }
 
-  depth(value) {}
+  depth(value) {
+    let currentNode = this.root;
+    let depth = 0;
+
+    while (currentNode !== null) {
+      if (value < currentNode.data) {
+        currentNode = currentNode.left;
+        depth++;
+      } else if (value > currentNode.data) {
+        currentNode = currentNode.right;
+        depth++;
+      } else {
+        return depth;
+      }
+    }
+  }
 }
 
 function removeDuplicates(array) {

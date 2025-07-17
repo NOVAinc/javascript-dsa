@@ -1,7 +1,5 @@
 import Tree from "./tree.js";
 
-let newTree = new Tree([1, 7, 4, 42, 34, 6, 8, 91, 43, 120, 18]);
-
 const prettyPrint = (node, prefix = "", isLeft = true) => {
   if (node === null) {
     return;
@@ -15,30 +13,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-prettyPrint(newTree.root);
-
-newTree.insert(2);
-newTree.insert(41);
-newTree.insert(126);
-newTree.insert(122);
+let newTree = new Tree([1, 7, 4, 42, 34, 6, 8, 91, 43, 120, 18]);
 
 prettyPrint(newTree.root);
-
-newTree.deleteItem(120);
-
-prettyPrint(newTree.root);
-
-console.log(newTree.find(91));
-
-console.log(newTree.find(125));
-
-newTree.levelOrdenIt((node) => console.log(node.data));
-
-console.log("preOrder:");
-newTree.preOrder((node) => console.log(node.data), newTree.root);
-console.log("inOrder:");
-newTree.inOrder((node) => console.log(node.data), newTree.root);
-console.log("postOrder:");
-newTree.postOrder((node) => console.log(node.data), newTree.root);
 
 newTree.height(43);
+
+newTree.depth(41);
