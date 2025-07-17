@@ -33,3 +33,12 @@ console.log(newTree.find(91));
 console.log(newTree.find(125));
 
 newTree.levelOrdenIt((node) => console.log(node.data));
+
+console.log("preOrder:");
+newTree.preOrder((node) => console.log(node.data), newTree.root);
+console.log("inOrder:");
+newTree.inOrder((node) => console.log(node.data), newTree.root);
+console.log("postOrder:");
+newTree.postOrder((node) => console.log(node.data), newTree.root);
+
+newTree.height(43);

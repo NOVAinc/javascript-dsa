@@ -126,7 +126,47 @@ export default class Tree {
     }
   }
 
-  levelOrderRe(callback) {}
+  inOrder(callback, node) {
+    if (node === null) {
+      return;
+    }
+
+    this.inOrder(callback, node.left);
+    callback(node);
+    this.inOrder(callback, node.right);
+  }
+
+  preOrder(callback, node) {
+    if (node === null) {
+      return;
+    }
+
+    callback(node);
+    this.preOrder(callback, node.left);
+    this.preOrder(callback, node.right);
+  }
+
+  postOrder(callback, node) {
+    if (node === null) {
+      return;
+    }
+
+    this.postOrder(callback, node.left);
+    this.postOrder(callback, node.right);
+    callback(node);
+  }
+
+  height(value) {
+    let node = this.find(value);
+
+    if (node === null) {
+      return null;
+    }
+
+    return calculateHeight(node);
+  }
+
+  depth(value) {}
 }
 
 function removeDuplicates(array) {
@@ -152,4 +192,21 @@ function buildTree(array) {
   node.right = buildTree(array.slice(middle + 1));
 
   return node;
+}
+
+function calculateHeight(node) {
+  if (node === null) {
+    return 0;
+  }
+
+  let [left, right] = [0, 0];
+
+  if (node.left !== null) {
+    left = 1 + calculateHeight(node.left);
+  }
+  if (node.right !== null) {
+    right = 1 + calculateHeight(node.right);
+  }
+
+  return left > right ? left : right;
 }
