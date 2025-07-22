@@ -13,10 +13,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
-let newTree = new Tree([1, 7, 4, 42, 34, 6, 8, 91, 43, 120, 18]);
+let newTree = new Tree([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
 
 prettyPrint(newTree.root);
 
-newTree.height(43);
+prettyPrint(newTree.root);
 
-newTree.depth(41);
+newTree.isBalanced();

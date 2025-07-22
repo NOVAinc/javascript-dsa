@@ -182,6 +182,15 @@ export default class Tree {
       }
     }
   }
+
+  isBalanced() {
+    /*
+    for every node, check the height of their left and right subtree
+    if the difference is more than 1 at any time, return false
+    else return true
+    */
+    return calculateBalance(this.root);
+  }
 }
 
 function removeDuplicates(array) {
@@ -224,4 +233,19 @@ function calculateHeight(node) {
   }
 
   return left > right ? left : right;
+}
+
+function calculateBalance(node) {
+  if (node === null) {
+    return true;
+  }
+
+  let left = node.left === null ? -1 : calculateHeight(node.left);
+  let right = node.right === null ? -1 : calculateHeight(node.right);
+
+  if (Math.abs(left - right) > 1) {
+    return false;
+  } else {
+    return calculateBalance(node.left) && calculateBalance(node.right);
+  }
 }
