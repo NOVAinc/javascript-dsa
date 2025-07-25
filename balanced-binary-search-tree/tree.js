@@ -184,13 +184,28 @@ export default class Tree {
   }
 
   isBalanced() {
-    /*
-    for every node, check the height of their left and right subtree
-    if the difference is more than 1 at any time, return false
-    else return true
-    */
     return calculateBalance(this.root);
   }
+
+  rebalance() {
+    let items = listItems(this.root);
+
+    this.root = buildTree(items);
+  }
+}
+
+function listItems(node) {
+  let items = [];
+
+  if (node === null) {
+    return items;
+  }
+
+  items.push(...listItems(node.left));
+  items.push(node.data);
+  items.push(...listItems(node.right));
+
+  return items;
 }
 
 function removeDuplicates(array) {
