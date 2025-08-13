@@ -23,7 +23,8 @@ function knightMoves(start, target, visited = []) {
   let startNodes = [];
   let forbidden = visited.slice();
 
-  if (start.length == 2 && Array.isArray(start[0]) === false) {
+  // Checks to see if 'start' contains the root function's starting vertex, and if so converts it to a node, else it just copies the node array
+  if (start.length == 2 && start[0] instanceof Node === false) {
     if (start[0] == target[0] && start[1] == target[1]) {
       console.log("The starting vertex is the same as the target");
       return;
@@ -40,7 +41,7 @@ function knightMoves(start, target, visited = []) {
     adjacentNodes = [...adjacentNodes, ...calcAdjVert(node)];
   }
 
-  adjacentNodes = removeVisited(adjacentNodes, forbidden);
+  adjacentNodes = removeVisited(removeDuplicates(adjacentNodes), forbidden);
 
   let foundNode = findNode(target, adjacentNodes);
 
@@ -51,6 +52,17 @@ function knightMoves(start, target, visited = []) {
     forbidden = [...forbidden, ...adjacentNodes];
     return knightMoves(adjacentNodes, target, forbidden);
   }
+}
+
+function removeDuplicates(nodes) {
+  let cleanArray = [];
+  for (let node of nodes) {
+    if (findNode(node.data, cleanArray) == undefined) {
+      cleanArray.push(node);
+    }
+  }
+
+  return cleanArray;
 }
 
 function calcPath(node) {
